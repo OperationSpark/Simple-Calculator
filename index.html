@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <style type="text/css">
+                
+        </style>
+    </head>
+    <body>
+        <div id="calculator">
+            <div>
+                <label>Value #1:</label>
+                <input type="number" id="value1"/>    
+            </div>
+            <div>
+                <label>Value #2: </label>
+                <input type="number" id="value2"/>    
+            </div>
+            <div>
+                <button id="add">+</button>
+                <button id="subtract">-</button>
+                <button id="multiply">*</button>
+                <button id="divide">/</button>
+            </div>
+            <div>
+                <label>Output Value:</label>
+                <input type="number" id="output-value" disabled/>
+                <button>Reuse Output Value</button>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>
+            (function () {
+                var getValue1, getValue2, reuseOutput, setupCalculator, 
+                    add, subtract, multiply, divide;
+                
+                getValue1 = function () {
+                    var rawValue = $("input[id=value1]").val(); 
+                    
+                    return parseFloat(rawValue);
+                };
+                
+                getValue2 = function () {
+                    var rawValue = $("input[id=value2]").val();
+                    return parseFloat(rawValue);  
+                };
+                
+                reuseOutput = function () {
+                    var outputValue = $("input[id=output-value]").val();
+                    $("input[id=value1]").val(outputValue);
+                    $("input[id=value2]").val(0);
+                };
+                
+                add = function (value1, value2) {
+                    return value1 + value2;  
+                };
+                
+                subtract = function (value1, value2) {
+                    return value1 - value2;
+                };
+                
+                multiply = function (value1, value2) {
+                    return value1 * value2;
+                };
+                
+                divide = function (value1, value2) {
+                    return value1 / value2;  
+                };
+                
+                setupCalculator = function () {
+                    $("button[id=add]").click(function () {
+                        var value1, value2, outputValue;
+                        
+                        value1 = getValue1();
+                        value2 = getValue1();
+                        outputValue = add(value1, value2);
+                        
+                        $("input[id=output-value]").val(outputValue);
+                    });
+                    
+                    $("button[id=subtract]").click(function () {
+                        var value1, value2, outputValue;
+                        
+                        value1 = getValue1();
+                        value2 = getValue1();
+                        outputValue = subtract(value1, value2);
+                        
+                        $("input[id=output-value]").val(outputValue);
+                    });
+                    
+                    $("button[id=multiply]").click(function () {
+                        var value1, value2, outputValue;
+                        
+                        value1 = getValue1();
+                        value2 = getValue1();
+                        outputValue = multiply(value1, value2);
+                        
+                        $("input[id=output-value]").val(outputValue);
+                    });
+                    
+                    $("button[id=divide]").click(function () {
+                        var value1, value2, outputValue;
+                        
+                        value1 = getValue1();
+                        value2 = getValue1();
+                        outputValue = divide(value1, value2);
+                        
+                        $("input[id=output-value]").val(outputValue);
+                    });
+                    
+                    $("button[id=output-value]").click(reuseOutput);
+                    
+                };
+                
+                setupCalculator();
+                
+            }).call();
+        </script>
+    </body>
+</html>
