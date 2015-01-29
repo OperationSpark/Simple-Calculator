@@ -1,0 +1,27 @@
+.row {
+    padding: 4px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+    display: flex;
+}
+[id=calculator] {
+    width: 20em;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgb(102, 153, 153);
+}
+label {
+    font-weight: bold;
+    width: 6em;
+    min-width: 6em;
+    flex-grow: 0;
+}
+button {
+    font-size: 150%;
+    font-family: consolas;              
+}
+[id=output-value] {
+    width: 100%;
+    font-size: 150%;
+    font-weight: bold;
+}
