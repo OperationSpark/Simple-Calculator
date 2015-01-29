@@ -25,6 +25,9 @@
                 <button id="divide">/</button>
             </div>
             <div class="row">
+                <button id="distance-between">⊿ - Distance Between</button>
+            </div>
+            <div class="row">
                 <label>Output Value:</label>
                 <input type="number" id="output-value" disabled/>
             </div>
@@ -34,9 +37,10 @@
         </div>
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
         <script>
+            'use strict'
             (function () {
                 var getValue1, getValue2, reuseOutput, setupCalculator, 
-                    add, subtract, multiply, divide, doMath;
+                    add, subtract, multiply, divide, doMath, distanceBetween;
                 
                 getValue1 = function () {
                     var rawValue = $("input[id=value1]").val(); 
@@ -71,6 +75,10 @@
                     return value1 / value2;  
                 };
                 
+                distanceBetween = function(value1, value2) {
+                    return Math.sqrt(value1*value1 + value2*value2);
+                };
+                
                 doMath = function(operation) {
                      var value1, value2, outputValue;
                     
@@ -100,6 +108,9 @@
                     
                     $("button[id=reuse-value]").click(reuseOutput);
                     
+                    $("button[id=distance-between]").click(function() {
+                        doMath(distanceBetween);
+                    })
                 };
                 
                 setupCalculator();
