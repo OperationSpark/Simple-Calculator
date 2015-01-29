@@ -3,7 +3,7 @@
     border-bottom: 1px solid rgb(210, 210, 210);
     display: flex;
 }
-[id=calculator] {
+[class~=nice-background] {
     width: 20em;
     border: 1px solid black;
     border-radius: 20px;
@@ -20,8 +20,9 @@ button {
     font-size: 150%;
     font-family: consolas;              
 }
-[id=output-value] {
+[class~=important-text] {
     width: 100%;
     font-size: 150%;
     font-weight: bold;
+    color: rgb(45, 136, 45);
 }
