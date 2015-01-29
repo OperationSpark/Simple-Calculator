@@ -36,7 +36,7 @@
         <script>
             (function () {
                 var getValue1, getValue2, reuseOutput, setupCalculator, 
-                    add, subtract, multiply, divide;
+                    add, subtract, multiply, divide, doMath;
                 
                 getValue1 = function () {
                     var rawValue = $("input[id=value1]").val(); 
@@ -71,45 +71,31 @@
                     return value1 / value2;  
                 };
                 
+                doMath = function(operation) {
+                     var value1, value2, outputValue;
+                    
+                    value1 = getValue1();
+                    value2 = getValue2();
+                    outputValue = operation(value1, value2);
+                    
+                    $("input[id=output-value]").val(outputValue);
+                }
+                
                 setupCalculator = function () {
                     $("button[id=add]").click(function () {
-                        var value1, value2, outputValue;
-                        
-                        value1 = getValue1();
-                        value2 = getValue2();
-                        outputValue = add(value1, value2);
-                        
-                        $("input[id=output-value]").val(outputValue);
+                        doMath(add);
                     });
                     
                     $("button[id=subtract]").click(function () {
-                        var value1, value2, outputValue;
-                        
-                        value1 = getValue1();
-                        value2 = getValue2();
-                        outputValue = subtract(value1, value2);
-                        
-                        $("input[id=output-value]").val(outputValue);
+                        doMath(subtract);
                     });
                     
                     $("button[id=multiply]").click(function () {
-                        var value1, value2, outputValue;
-                        
-                        value1 = getValue1();
-                        value2 = getValue2();
-                        outputValue = multiply(value1, value2);
-                        
-                        $("input[id=output-value]").val(outputValue);
+                        doMath(multiply);
                     });
                     
                     $("button[id=divide]").click(function () {
-                        var value1, value2, outputValue;
-                        
-                        value1 = getValue1();
-                        value2 = getValue2();
-                        outputValue = divide(value1, value2);
-                        
-                        $("input[id=output-value]").val(outputValue);
+                        doMath(divide);
                     });
                     
                     $("button[id=reuse-value]").click(reuseOutput);
